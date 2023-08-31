@@ -1,0 +1,3 @@
+# comments,,,,"# 150bp R1 read, use 1-based indexing",,,,,,
+sample_id,sample_name,sample_type,pool_name,barcode_read,barcode_start,barcode_length,insert_read,insert_start,insert_length,filename
+107p3,yeast_cyto_plasmid,plasmid,yeast_cyto,1,1,24,1,25,96,107p3_S3_R1_001.fastq

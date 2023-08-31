@@ -1,0 +1,3 @@
+sample_id,index_primer,sample_name,sample_type,localization,linkage_ref,sample_num,barcode_read,barcode_start,barcode_length
+hp1,oAS112,mrna_cyto,mrna,cyto,yeast_cyto_plasmid,1,1,1,24
+hp3,oAS114,grna_cyto,grna,cyto,yeast_cyto_plasmid,3,1,1,24

@@ -1,0 +1,3 @@
+# optional comment for each column  in this row. All commented out rows are preceded by #  which can be ignored by dplyr and pandas.,,,,,,# concatenating the SRA files means both insert and barcode are on one line,,,,# 1-based indexing,,,,,
+owner,sample_type,sample_name,plasmid,library_type,sample_id,insert_read,insert_start,insert_length,barcode_read,barcode_start,barcode_length,r1_file,r2_file,s3,shared
+kc,dicodon_yeast,yeast_cyto_linkage,pHPSC1142,plasmid,yeast_cyto_linkage,1,61,48,1,1,24,yeast_cyto_linkage_S11_R1_001,yeast_cyto_linkage_S11_R2_001,fh-pi-subramaniam-a-eco/data/kchen/illumina/20210921_cyto_mito_8xdicodon_mrna_grna_reseq/,/shared/ngs/illumina/subramaniam_lab/210920_VH00319_98_AAAMLC3M5/Unaligned/Project_subramaniam_lab/

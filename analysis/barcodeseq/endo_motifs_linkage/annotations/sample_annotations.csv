@@ -1,0 +1,3 @@
+# optional comment for each column  in this row,# all commented out rows are preceded by which can be ignored by dplyr and pandas,,,,,,,# 1-based indexing,,,# 1-based indexing,,,,,,,
+owner,sample_name,library_type,plasmid_snapgene_map,amplicon_snapgene_map,illumina_sample_id,sample_id,barcode_read,barcode_start,barcode_length,insert_read,insert_start,insert_length,r1_file,r2_file,i1_file,i5_file,run_id,s3_location
+kc,endo_sdd1_fk8_dms,plasmid,pHPSC1161_pHPSC1162,lKCSC04,kc_70lib5,70lib5_1,1,7,24,1,33,75,kc_70lib5_1_S5_R1_001,kc_70lib5_1_S5_R2_001,kc_70lib5_1_S5_I1_001,kc_70lib5_1_S5_i5_001,221229_VH01189_45_AACH7CYM5,s3://fh-pi-subramaniam-a-eco/data/kchen/illumina/20221229_exp70_svkf_sdd1_dms_endo_motifs/
