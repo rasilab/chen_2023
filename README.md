@@ -21,3 +21,11 @@ Genetic deletion of the ribosome collision sensor Hel2 rescues the mRNA effects 
 Deep mutational scanning of an mRNA-destabilizing dipeptide repeat reveals a complex relationship between the charge, bulkiness, and location of amino acid residues in conferring mRNA instability.
 Finally, we show that the mRNA effects of codon pairs are predictive of the effects of endogenous sequences.
 Our work highlights the complexity of sequence motifs driving co-translational mRNA decay in eukaryotes, and presents a high-throughput approach to dissect their requirements at the codon level.
+
+## Running the code
+- To run this on a cluster with singularity containers, do:
+```
+module load singularity # for fred hutch cluster
+conda activate snakemake # this is a minimal conda env that has snakemake-minimal and pandas for invoking snakefile
+sh run_everything.sh
+```
