@@ -1,6 +1,4 @@
----
-title: Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
----
+# Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 
 Katharine Chen^1,2^, Heungwon Park^1^, Arvind Rasi Subramaniam^1,†^
 
@@ -12,7 +10,7 @@ Seattle, WA 98195, USA
 
 ^†^ Corresponding author: <rasi@fredhutch.org>
 
-# Abstract
+## Abstract
 
 Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
 However, the full diversity of sequence motifs that trigger co-translational mRNA decay is poorly understood.
