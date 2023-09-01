@@ -29,3 +29,8 @@ module load singularity # for fred hutch cluster
 conda activate snakemake # this is a minimal conda env that has snakemake-minimal and pandas for invoking snakefile
 sh run_everything.sh
 ```
+
+## Docker containers
+- [R](https://github.com/rasilab/r/pkgs/container/r)
+- [python](https://github.com/rasilab/python/pkgs/container/python)
+- [R and python](https://github.com/rasilab/r_python/pkgs/container/r_python)
