@@ -1,6 +1,3 @@
-# chen_2023
-Analysis code for Chen 2023 manuscript
-
 ---
 title: Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 ---
