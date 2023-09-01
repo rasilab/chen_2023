@@ -1,14 +1,14 @@
 # Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 
-Katharine Chen^1,2^, Heungwon Park^1^, Arvind Rasi Subramaniam^1,†^
+**Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
 
-^1^ Basic Sciences Division and Computational Biology Section of the Public
+sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
 Health Sciences Division, Fred Hutchinson Cancer Center, Seattle, WA
 98109, USA,
-^2^ Molecular and Cellular Biology Program, University of Washington,
+sup>2</sup> Molecular and Cellular Biology Program, University of Washington,
 Seattle, WA 98195, USA 
 
-^†^ Corresponding author: <rasi@fredhutch.org>
+<sup>†</sup> Corresponding author: <rasi@fredhutch.org>
 
 ## Abstract
 
