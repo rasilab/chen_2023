@@ -2,10 +2,10 @@
 
 **Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
 
-sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
+<sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
 Health Sciences Division, Fred Hutchinson Cancer Center, Seattle, WA
 98109, USA <br/>
-sup>2</sup> Molecular and Cellular Biology Program, University of Washington,
+<sup>2</sup> Molecular and Cellular Biology Program, University of Washington,
 Seattle, WA 98195, USA <br/>
 
 <sup>†</sup> Corresponding author: <rasi@fredhutch.org>
