@@ -55,10 +55,14 @@ echo "Running WT/Hel2-del endogenous motifs mRNA and gDNA barcode sequencing ana
 cd $base_folder/analysis/barcodeseq/endo_motifs_mrna_grna/scripts
 sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
+echo "Running endogenous fragments library design scripts"
+cd $base_folder/analysis/library_design/endogenous_fragments/scripts
+sh submit_cluster.sh "--snakefile" run_analysis.smk $@
+
+echo "Running endogenous motifs library design scripts"
+cd $base_folder/analysis/library_design/endogenous_motifs/scripts
+sh submit_cluster.sh "--snakefile" run_analysis.smk $@
+
 echo "Running all plotting notebooks to regenerate figures"
 cd $base_folder/analysis
-sh submit_cluster.sh "--snakefile" run_all_ipynb_scripts.smk $@
-
-echo "Running endogemous motifs library design scripts"
-cd $base_folder/analysis/library_design/scripts
 sh submit_cluster.sh "--snakefile" run_all_ipynb_scripts.smk $@
