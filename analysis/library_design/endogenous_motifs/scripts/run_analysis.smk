@@ -1,7 +1,7 @@
 rule all:
   input:
     "get_sgd_orf_annotations.nbconvert.ipynb",
-    "../data/sgd/cds_coding.fasta"
+    "../data/sgd/cds_coding.fasta",
     "calculate_stall_scores.nbconvert.ipynb",
     "../data/stallscores/posbulky_motif_scores_sgd_orfs.tsv",
     "../data/stallscores/dipeptide_scores_sgd_orfs.tsv",
@@ -15,7 +15,7 @@ rule write_sgd_annotations_fasta:
   output:
     "get_sgd_orf_annotations.nbconvert.ipynb",
     "../data/sgd/cds_coding.fasta"
-  container: 'docker://ghcr.io/rasilab/r_python:1.1.0'
+  container: 'docker://ghcr.io/rasilab/r:1.0.0'
   shell:
     """
     export JUPYTER_DATA_DIR=$(pwd)
@@ -31,12 +31,12 @@ rule calculate_stall_scores:
     "calculate_stall_scores.nbconvert.ipynb",
     "../data/stallscores/posbulky_motif_scores_sgd_orfs.tsv",
     "../data/stallscores/dipeptide_scores_sgd_orfs.tsv"
-  container: 'docker://ghcr.io/rasilab/r_python:1.1.0' 
+  container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell:
     """
     export JUPYTER_DATA_DIR=$(pwd)
     export JUPYTER_CONFIG_DIR=$(pwd)
-    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir {input.notebook}
+    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 {input.notebook}
     """
 
 rule subset_genes_to_test:
@@ -48,7 +48,7 @@ rule subset_genes_to_test:
   output:
     "evaluate_motif_scores.nbconvert.ipynb",
     "../data/motifs/stall_motifs_controls.tsv"
-  container: 'docker://ghcr.io/rasilab/r_python:1.1.0'  
+  container: 'docker://ghcr.io/rasilab/r:1.0.0'
   shell:
     """
     export JUPYTER_DATA_DIR=$(pwd)

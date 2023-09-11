@@ -12,10 +12,10 @@ rule extract_fragments:
   output:
     "yeast_fragments_design.nbconvert.ipynb",
     '../tables/yeastorffrags.csv'
-  container: 'docker://ghcr.io/rasilab/r_python:1.1.0'
+  container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell:
     """
     export JUPYTER_DATA_DIR=$(pwd)
     export JUPYTER_CONFIG_DIR=$(pwd)
-    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir {input.notebook}
+    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=python3 {input.notebook}
     """
