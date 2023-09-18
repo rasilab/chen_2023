@@ -1,3 +1,22 @@
+## Table of Contents
+- [Abstract](#abstract)
+- [Instructions for running the code repo](#running-the-code)
+- [Data](data/)
+  - Includes flow cytometry raw data that is also available at http://flowrepository.org/id/FR-FCM-Z6QH
+- [Code for designing endogenous fragments library](analysis/library_design/endogenous_fragments/)
+- [Code for processing flow cytometry data and regenerating figure panels](analysis/flow_cytometry/wt_hel2_8xdicodon/scripts)
+- [Code for linking barcodes and codon pair inserts in original 8× dicodon library](analysis/barcodeseq/8xdicodon_linkage/scripts/)
+- [Code for linking barcodes and codon pair inserts in frameshifted 8× dicodon library](analysis/barcodeseq/frameshifted_8xdicodon_linkage/)
+- [Code for linking barcodes and codon pair inserts small-scale validation library](analysis/barcodeseq/mini_8xdicodon_linkage/scripts/)
+- Code for counting barcodes and regenerating figures:
+  - [codon pair library wild-type cells](analysis/barcodeseq/wt_mrna_grna/scripts/)
+  - [codon pair library *hel2Δ* and *syh1Δ* cells](analysis/barcodeseq/hel2_syh1_mrna_grna/scripts/)
+  - [frameshifted codon pair library](analysis/barcodeseq/wt_frameshifted_mrna_grna/scripts/)
+  - [small-scale validation library](analysis/barcodeseq/wt_hel2_mini_pool/scripts/)
+  - [codon pair library under glucose depletion](analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/)
+- [Code for counting insert-UMI pairs in (FK)~8~ DMS library](analysis/barcodeseq/wt_hel2_fk8_dms/scripts/)
+- [Code to regenerate all figure panels](analysis/run_all_ipynb_scripts.smk)
+
 # Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 
 **Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
@@ -29,6 +48,13 @@ module load singularity # for fred hutch cluster
 conda activate snakemake # this is a minimal conda env that has snakemake-minimal and pandas for invoking snakefile
 sh run_everything.sh
 ```
+
+- The ```run_everything.sh``` file will:
+  - Download FASTQ files from SRA
+  - Run all linkage sequencing, barcode sequencing, and insert sequencing [code](analysis/barcodeseq)
+  - Run [code](analysis/library_design/endogenous_fragments/scripts/run_analysis.smk) to design of the endogenous fragments library
+  - Run [code](analysis/run_all_ipynb_scripts.smk) to regenerate figure panels
+    - This will also run the code to process flow cytometry data
 
 ## Docker containers
 - [R](https://github.com/rasilab/r/pkgs/container/r)
