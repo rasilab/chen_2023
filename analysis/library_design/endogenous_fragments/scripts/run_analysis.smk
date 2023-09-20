@@ -4,9 +4,8 @@ rule all:
 
 rule extract_fragments:
   input:
-    db = '../db/saccharomyces_cerevisiae_R64-1-1_20110208.gff',
     fasta = '../db/orf_coding_all_R64-1-1_20110203.fasta',
-    expression = '../weinberg2016/GSE53313_Cerevisiae_RNA_RPF.txt',
+    annotated_expression = '../weinberg2016/GSE53313_Cerevisiae_RNA_RPF_annotated.csv',
     notebook = 'design_yeast_fragments.ipynb'
   output:
     '../tables/yeastorffrags.csv'
