@@ -11,6 +11,7 @@ rule all:
     "barcodeseq/hel2_syh1_mrna_grna/scripts/plot_hel2_syh1_dipeptide_effects.nbconvert.ipynb",
     "barcodeseq/hel2_syh1_mrna_grna/scripts/plot_supp_aln_qc.nbconvert.ipynb",
     "barcodeseq/wt_hel2_fk8_dms/scripts/plot_variant_effects.nbconvert.ipynb",
+    "barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.nbconvert.ipynb",
 
 rule plot_aggregate_effects:
   input:
@@ -130,6 +131,19 @@ rule plot_fk8_dms_data:
     "barcodeseq/wt_hel2_fk8_dms/scripts/plot_variant_effects.ipynb",
   output:
     "barcodeseq/wt_hel2_fk8_dms/scripts/plot_variant_effects.nbconvert.ipynb",
+  container: 'docker://ghcr.io/rasilab/r_python:1.1.0'
+  shell:
+    """
+    export JUPYTER_DATA_DIR=$(pwd)
+    export JUPYTER_CONFIG_DIR=$(pwd)
+    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir {input}
+    """
+
+rule plot_endo_fragments_data:
+  input:
+    "barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.ipynb",
+  output:
+    "barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.nbconvert.ipynb",
   container: 'docker://ghcr.io/rasilab/r_python:1.1.0'
   shell:
     """
