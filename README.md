@@ -1,3 +1,18 @@
+
+# Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
+
+**Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
+
+<sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
+Health Sciences Division, Fred Hutchinson Cancer Center, Seattle, WA
+98109, USA <br/>
+<sup>2</sup> Molecular and Cellular Biology Program, University of Washington,
+Seattle, WA 98195, USA <br/>
+
+<sup>†</sup> Corresponding author: <rasi@fredhutch.org>
+
+bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023.09.27.559793v1)
+
 ## Table of Contents
 - [Abstract](#abstract)
 - [Instructions for running the code repo](#running-the-code)
@@ -16,18 +31,6 @@
   - [codon pair library under glucose depletion](analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/)
 - [Code for counting insert-UMI pairs in (FK)~8~ DMS library](analysis/barcodeseq/wt_hel2_fk8_dms/scripts/)
 - [Code to regenerate all figure panels](analysis/run_all_ipynb_scripts.smk)
-
-# Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
-
-**Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
-
-<sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
-Health Sciences Division, Fred Hutchinson Cancer Center, Seattle, WA
-98109, USA <br/>
-<sup>2</sup> Molecular and Cellular Biology Program, University of Washington,
-Seattle, WA 98195, USA <br/>
-
-<sup>†</sup> Corresponding author: <rasi@fredhutch.org>
 
 ## Abstract
 
