@@ -1,0 +1,9 @@
+# all commented out rows are preceded by which can be ignored by dplyr and pandas,,,,
+ID, strain , plasmid , genotype ,library
+scKC212, BY4741 , pHPSC1165 , WT ,89lib1
+ scKC213 , scHP1528 , pHPSC1168 , Cue2 ,89lib4
+ scKC214 , scKC192 , pHPSC1169 , Syh1 ,89lib5
+ scKC215 , scHP519 , pHPSC1170 , Hel2 ,89lib6
+ scKC216 , scKC211 , pHPSC1171 , Hel2/Syh1 ,89lib7
+ scKC203 , scHP1527 , pHPSC1166 , Xrn1 ,89lib2
+ scKC218 , scKC193 , pHPSC1167 , Not5 ,89lib3

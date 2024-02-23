@@ -1,0 +1,6 @@
+# optional comment for each column  in this row. All commented out rows are preceded by #  which can be ignored by dplyr and pandas.,,,,,# which read is the insert on?,# 1-based indexing,,,,,# 1-based indexing,,
+owner,sample_name,library_type,illumina_sample_id,sample_id,insert_read,insert_start,insert_length,umi_read,umi_start,umi_length,r1_file,r2_file,i1_file
+kc,upf1_revision_dms_rep1_mrna,mrna,89lib11,upf1_revision_dms_rep1_mrna,1,1,35,2,1,7,upf1_revision_dms_rep1_mrna_S2_R1_001.fastq,upf1_revision_dms_rep1_mrna_S2_R2_001.fastq,upf1_revision_dms_rep1_mrna_S2_I1_001.fastq
+kc,upf1_revision_dms_rep2_mrna,mrna,89lib13,upf1_revision_dms_rep2_mrna,1,1,35,2,1,7,upf1_revision_dms_rep2_mrna_S4_R1_001.fastq,upf1_revision_dms_rep2_mrna_S4_R2_001.fastq,upf1_revision_dms_rep2_mrna_S4_I1_001.fastq
+kc,upf1_revision_dms_rep1_gdna,grna,89lib15,upf1_revision_dms_rep1_gdna,1,1,35,2,1,7,upf1_revision_dms_rep1_gdna_S6_R1_001.fastq,upf1_revision_dms_rep1_gdna_S6_R2_001.fastq,upf1_revision_dms_rep1_gdna_S6_I1_001.fastq
+kc,upf1_revision_dms_rep2_gdna,grna,89lib17,upf1_revision_dms_rep2_gdna,1,1,35,2,1,7,upf1_revision_dms_rep2_gdna_S8_R1_001.fastq,upf1_revision_dms_rep2_gdna_S8_R2_001.fastq,upf1_revision_dms_rep2_gdna_S8_I1_001.fastq

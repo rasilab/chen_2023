@@ -27,7 +27,7 @@ echo "Running WT/Hel2-del glucose deprivation mRNA and gDNA barcode sequencing a
 cd $base_folder/analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts
 sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
-echo "Running WT/Hel2-del FK8 DMS mRNA and gDNA barcode sequencing analysis"
+echo "Running WT/Hel2-del FK8 DMS mRNA and gDNA insert sequencing analysis"
 cd $base_folder/analysis/barcodeseq/wt_hel2_fk8_dms/scripts
 sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
@@ -49,6 +49,18 @@ sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
 echo "Running endogenous fragments library design scripts"
 cd $base_folder/analysis/library_design/endogenous_fragments/scripts
+sh submit_cluster.sh "--snakefile" run_analysis.smk $@
+
+echo "Running small 8xdicodon library linkage sequencing analysis"
+cd $base_folder/analysis/barcodeseq/small_8xdicodon_rqcdel_linkage/scripts
+sh submit_cluster.sh "--snakefile" run_analysis.smk $@
+
+echo "Running small 8xdicodon library in RQC-del strains mRNA and gDNA barcode sequencing analysis"
+cd $base_folder/analysis/barcodeseq/small_8xdicodon_rqcdel_mrna_grna/scripts
+sh submit_cluster.sh "--snakefile" run_analysis.smk $@
+
+echo "Running Upf1-del FK8 DMS mRNA and gDNA insert sequencing analysis"
+cd $base_folder/analysis/barcodeseq/upf1_fk8_dms/scripts
 sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
 echo "Running all plotting notebooks to regenerate figures"

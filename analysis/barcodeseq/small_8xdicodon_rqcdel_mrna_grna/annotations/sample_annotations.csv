@@ -1,0 +1,4 @@
+# optional comment for each column  in this row,# all commented out rows are preceded by which can be ignored by dplyr and pandas,,,,,,,# 1-based indexing,,,# 1-based indexing,,
+owner,sample_name,library_type,plasmid_snapgene_map,amplicon_snapgene_map,illumina_sample_id,sample_id,barcode_read,barcode_start,barcode_length,r1_file,r2_file,run_id,s3_location
+kc,revision_dicodon,mrna,pHPSC1165-71,lKCSC05,kc_89lib8,89lib8,1,1,24,kc_89lib8_S8_R1_001,kc_89lib8_S8_R2_001,231207_VH00699_402_AAFFN3WM5,fh-pi-subramaniam-a-eco/git_repos/rqc_aggregation_aging/analysis/deepseq/20231208_revision_dicodon_linkageseq/data/fastq
+kc,revision_dicodon,grna,pHPSC1165-71,lKCSC05,kc_89lib9,89lib9,1,1,24,kc_89lib9_S9_R1_001,kc_89lib9_S9_R2_001,231207_VH00699_402_AAFFN3WM5,fh-pi-subramaniam-a-eco/git_repos/rqc_aggregation_aging/analysis/deepseq/20231208_revision_dicodon_linkageseq/data/fastq
