@@ -32,6 +32,28 @@ bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023
 - [Code for counting insert-UMI pairs in (FK)~8~ DMS library](analysis/barcodeseq/wt_hel2_fk8_dms/scripts/)
 - [Code to regenerate all figure panels](analysis/run_all_ipynb_scripts.smk)
 
+## Code to generate figures
+
+| Figure panels        | Experiment                                                                                           | Script                                                                                    |
+| -------------------- | ---------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| 1B, 1C, 1D, 1E, 1F   | Barcode seq of wild-type cells with codon pair library                                               | \url{barcodeseq/wt_mrna_grna/scripts/plot_aggregate_effects.ipynb}                   |
+| 2A, 2B, S1D          | Barcode seq of wild-type cells with codon pair library                                               | \url{analysis/barcodeseq/wt_mrna_grna/scripts/plot_dipeptide_effects.ipynb}                   |
+| 2C, 2D               | Flow cytometry of wild-type cells with individual codon pair inserts                                 | \url{analysis/flow_cytometry/scripts/plot_figure2_flow.ipynb}                                 |
+| 3A                   | Barcode seq of wild-type cells with codon pair library computationally frameshifted                  | \url{analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/plot_translation_effects.ipynb} |
+| 3B, 3C, S4B          | Barcode seq of wild-type cells with codon pair library during glucose depletion                      | \url{analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/plot_translation_effects.ipynb} |
+| 3E, 3F               | Barcode seq of wild-type cells with -1 frameshifted codon pair library                               | \url{analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/plot_translation_effects.ipynb} |
+| 4C, 4D, 4E, S3C, S6A | Barcode seq of *hel2∆* and *syh1∆* cells with codon pair library                                     | \url{analysis/barcodeseq/hel2_syh1_mrna_grna/scripts/plot_hel2_syh1_dipeptide_effects.ipynb}  |
+| 5B, 5C, S5C          | Deep mutational scan of (FK)~8~ in wild-type and *hel2∆* cells                                       | \url{analysis/barcodeseq/wt_hel2_fk8_dms/scripts/plot_variant_effects.ipynb}                  |
+| 6B, 6C, 6D           | Barcode seq of wild-type and *hel2∆* cells with endogenous fragments library                         | \url{analysis/barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.ipynb}             |
+| S1A                  | Barcode seq of wild-type cells with codon pair library                                               | \url{analysis/barcodeseq/wt_mrna_grna/scripts/plot_supp_alignment_stats.ipynb}                |
+| S1B, S1C, S1E        | Barcode seq of wild-type cells with codon pair library                                               | \url{analysis/barcodeseq/wt_mrna_grna/scripts/plot_supplemental_missing_data.ipynb}           |
+| S2A, S2B             | Barcode seq of wild-type with codon pair or mini-pool libraries                                      | \url{analysis/barcodeseq/wt_mrna_grna/scripts/plot_supp_alignment_stats.ipynb}                |
+| S2C, S2D, S2E        | Flow cytometry of wild-type and *hel2∆* cells with individual codon pair inserts                     | \url{analysis/barcodeseq/hel2_syh1_mrna_grna/scripts/plot_supp_aln_qc.ipynb}                  |
+| S3A, S3B             | Summary of wild-type cells with codon pair library during all translation-related conditions         | \url{analysis/barcodeseq/wt_hel2_no_glucose_mrna_grna/scripts/plot_translation_effects.ipynb} |
+| S4A                  | Wild-type, *hel2∆*, *syh1∆*, *hel2∆/syh1∆*, *cue2∆*, and *xrn1∆* cells with revision codon pair pool | \url{analysis/barcodeseq/small_8xdicodon_rqcdel_mrna_grna/scripts/plot_dicodon_effects.ipynb} |
+| S5A, S5B             | Wild-type, *hel2∆*, and *upf1∆* cells with (FK)~8~ DMS library                                       | \url{analysis/barcodeseq/upf1_fk8_dms/scripts/plot_variant_effects_wt_hel2_upf1_reps.ipynb}   |
+
+
 ## Abstract
 
 Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
