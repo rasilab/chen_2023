@@ -1,7 +1,7 @@
 
 # Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 
-**Katharine Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
+**Katharine Y. Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
 
 <sup>1</sup> Basic Sciences Division and Computational Biology Section of the Public
 Health Sciences Division, Fred Hutchinson Cancer Center, Seattle, WA
