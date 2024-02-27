@@ -11,7 +11,7 @@ import itertools as it
 # configuration specific to this analysis
 sample_annotations = pd.read_table("../annotations/sample_annotations_sc.csv", 
                                    sep=",", comment = "#", dtype=object)
-
+sra_annotations = pd.read_table("../../../../annotations/sra_annotations.tsv")
 
 # these rules are run locally
 localrules: all
@@ -22,35 +22,34 @@ rule all:
   """List of all files we want at the end
   """
   input:
-    insert_umi = expand('../data/insert_umi_sc/{sample_id}.csv', 
-      sample_id=sample_annotations['sample_id']),
-    insert_umi_counts = expand('../data/insert_umi_counts_sc/{sample_id}.csv', 
-      sample_id=sample_annotations['sample_id']),
-    annotated_insert_umi_counts = expand('../data/annotated_insert_umi_counts_sc/{sample_id}.csv', 
-      sample_id=sample_annotations['sample_id']),
+    insert_umi = expand('../data/insert_umi_sc/{sample_name}.csv', 
+      sample_name=sample_annotations['sample_name']),
+    insert_umi_counts = expand('../data/insert_umi_counts_sc/{sample_name}.csv', 
+      sample_name=sample_annotations['sample_name']),
+    annotated_insert_umi_counts = expand('../data/annotated_insert_umi_counts_sc/{sample_name}.csv', 
+      sample_name=sample_annotations['sample_name']),
 
    
-def get_split_read_files_input(wildcards):
-  """This function returns the names of R1,R2,R3 files for combining them
-  """
-  filenames = [f'../data/fastq/{filename}' 
-      for filename in filter(lambda x: re.search(f'{wildcards.sample_id}_', x) and re.search('_R[123]_', x), os.listdir('../data/fastq/'))]
-  print(filenames)
-  return filenames
+def get_fastq_file_for_sample_name(wildcards):
+  """This function gets the SRR file based on the sample_id in `sample_annotations`"""
+  sample_id = sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'sample_id'].item()
+  srr = sra_annotations.loc[sra_annotations['sample_id'] == sample_id, 'srr'].item()
+  filename = f'../../../../data/fastq/{srr}.fastq'
+  return filename
 
 rule extract_and_tabulate_all_insert_umi:
   """Extract and tabulate insert and umis
   """
-  input: get_split_read_files_input
-  output: '../data/insert_umi_sc/{sample_id}.csv'
+  input: get_fastq_file_for_sample_name
+  output: '../data/insert_umi_sc/{sample_name}.csv'
   params:
-    umi_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'umi_read'].tolist()[0],
-    umi_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'umi_start'].tolist()[0],
-    umi_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'umi_length'].tolist()[0],
-    insert_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'insert_read'].tolist()[0],
-    insert_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'insert_start'].tolist()[0],
-    insert_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'insert_length'].tolist()[0],
-  log: '../data/insert_umi_sc/{sample_id}.log'
+    umi_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'umi_read'].tolist()[0],
+    umi_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'umi_start'].tolist()[0],
+    umi_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'umi_length'].tolist()[0],
+    insert_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'insert_read'].tolist()[0],
+    insert_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'insert_start'].tolist()[0],
+    insert_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'insert_length'].tolist()[0],
+  log: '../data/insert_umi/{sample_name}.log'
   container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell: 
     """
@@ -71,9 +70,9 @@ rule extract_and_tabulate_all_insert_umi:
 rule count_insert_umi_combinations:
   """Count number of reads for each combination of insert and umi
   """
-  input: '../data/insert_umi_sc/{sample_id}.csv'
-  output: '../data/insert_umi_counts_sc/{sample_id}.csv'
-  log: '../data/insert_umi_counts_sc/{sample_id}.log'
+  input: '../data/insert_umi_sc/{sample_name}.csv'
+  output: '../data/insert_umi_counts_sc/{sample_name}.csv'
+  log: '../data/insert_umi_counts_sc/{sample_name}.log'
   container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell: 
     """
@@ -93,15 +92,15 @@ rule subset_to_annotated_inserts:
   """Subset insert-umi counts to only annotated inserts
   """
   input:
-    count_file = '../data/insert_umi_counts_sc/{sample_id}.csv',
+    count_file = '../data/insert_umi_counts_sc/{sample_name}.csv',
     insert_annotations = '../annotations/spikein_annotations.csv',
   output:
-    annotated_insert_count_file = '../data/annotated_insert_umi_counts_sc/{sample_id}.csv'
+    annotated_insert_count_file = '../data/annotated_insert_umi_counts_sc/{sample_name}.csv'
   params:
     # column in insert annotations file that contains the insert number and sequence
     insert_num_column = 1,
     insert_seq_column = 2,
-  log: '../data/annotated_insert_umi_counts_sc/{sample_id}.log'
+  log: '../data/annotated_insert_umi_counts_sc/{sample_name}.log'
   container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell:
     """

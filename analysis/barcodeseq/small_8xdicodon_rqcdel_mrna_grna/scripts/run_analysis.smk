@@ -16,6 +16,7 @@ sample_annotations = pd.read_table("../annotations/sample_annotations.csv",
 print(sample_annotations)
 
 linkage = "../../small_8xdicodon_rqcdel_linkage/data/filtered_barcodes/filtered_barcodes_all_linkage.csv"
+sra_annotations = pd.read_table("../../../../annotations/sra_annotations.tsv")
 
 # these rules are run locally
 localrules: all
@@ -26,31 +27,30 @@ rule all:
   """List of all files we want at the end
   """
   input:
-    raw_barcode_counts = expand('../data/raw_barcode_counts/{sample_id}.csv', 
-      sample_id=sample_annotations['sample_id']),
-    linked_barcode_counts = expand('../data/linked_barcode_counts/{sample_id}.csv', 
-      sample_id=sample_annotations['sample_id']),
+    raw_barcode_counts = expand('../data/raw_barcode_counts/{sample_name}.csv', 
+      sample_name=sample_annotations['sample_name']),
+    linked_barcode_counts = expand('../data/linked_barcode_counts/{sample_name}.csv', 
+      sample_name=sample_annotations['sample_name']),
    
 
-def get_fastq(wildcards):
-  """This function returns fastq file for sample name
+def get_fastq_file_for_sample_name(wildcards):
+  """This function gets the SRR file based on the sample_id in `sample_annotations`
   """
-  sample_id = sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'sample_id'].item()
-  filenames = [f'../data/fastq/{filename}' 
-      for filename in filter(lambda x: re.search(f'_{sample_id}_', x) and re.search('_R1_', x), 
-      os.listdir('../data/fastq/'))]
-  return filenames
+  sample_id = sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'sample_id'].item()
+  srr = sra_annotations.loc[sra_annotations['sample_id'] == sample_id, 'srr'].item()
+  filename = f'../../../../data/fastq/{srr}.fastq'
+  return filename
 
 rule count:
   """Count each barcode
   """
-  input: get_fastq
-  output: '../data/raw_barcode_counts/{sample_id}.csv'
-  log: '../data/raw_barcode_counts/{sample_id}.log'
+  input: get_fastq_file_for_sample_name
+  output: '../data/raw_barcode_counts/{sample_name}.csv'
+  log: '../data/raw_barcode_counts/{sample_name}.log'
   params:
-    barcode_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'barcode_read'].tolist()[0],
-    barcode_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'barcode_start'].tolist()[0],
-    barcode_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'barcode_length'].tolist()[0],
+    barcode_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'barcode_read'].tolist()[0],
+    barcode_start = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'barcode_start'].tolist()[0],
+    barcode_length = lambda wildcards: sample_annotations.loc[sample_annotations['sample_name'] == wildcards.sample_name, 'barcode_length'].tolist()[0],
   container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell: 
     """
@@ -74,14 +74,14 @@ rule subset_to_linked_barcodes:
   """Subset barcode counts to only those barcodes identified in linkage sequencing
   """
   input:
-    barcode_count_file = '../data/raw_barcode_counts/{sample_id}.csv',
+    barcode_count_file = '../data/raw_barcode_counts/{sample_name}.csv',
     barcode_linkage_file = linkage
   output:
-    linked_barcode_count_file = '../data/linked_barcode_counts/{sample_id}.csv'
+    linked_barcode_count_file = '../data/linked_barcode_counts/{sample_name}.csv'
   params:
     # column containing barcode sequence in linkage file
     barcode_col = 3
-  log: '../data/linked_barcode_counts/{sample_id}.log'
+  log: '../data/linked_barcode_counts/{sample_name}.log'
   container: 'docker://ghcr.io/rasilab/python:1.0.0'
   shell:
     """

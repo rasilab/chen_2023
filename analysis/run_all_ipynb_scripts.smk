@@ -143,8 +143,9 @@ rule plot_fk8_dms_data:
 
 rule plot_endo_fragments_data:
   input:
-    "barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.ipynb",
-    wt="barcodeseq/wt_mrna_grna/tables/barcode_insert_counts.tsv.gz"
+    notebook="barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.ipynb",
+    wt="barcodeseq/wt_mrna_grna/tables/barcode_insert_counts.tsv.gz",
+    hel2_syh1="barcodeseq/hel2_syh1_mrna_grna/tables/barcode_insert_counts.tsv.gz"
   output:
     "barcodeseq/endo_frag_mrna_grna/scripts/plot_endogenous_frags.nbconvert.ipynb",
   container: 'docker://ghcr.io/rasilab/r_python:1.1.0'
@@ -152,7 +153,7 @@ rule plot_endo_fragments_data:
     """
     export JUPYTER_DATA_DIR=$(pwd)
     export JUPYTER_CONFIG_DIR=$(pwd)
-    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir {input}
+    jupyter nbconvert --to notebook --execute --ExecutePreprocessor.kernel_name=ir {input.notebook}
     """
 
 rule plot_small_8xdicodon:

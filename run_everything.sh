@@ -63,6 +63,10 @@ echo "Running Upf1-del FK8 DMS mRNA and gDNA insert sequencing analysis"
 cd $base_folder/analysis/barcodeseq/upf1_fk8_dms/scripts
 sh submit_cluster.sh "--snakefile" run_analysis.smk $@
 
+echo "Running Upf1-del FK8 DMS mRNA and gDNA spike-in strain insert sequencing analysis"
+cd $base_folder/analysis/barcodeseq/upf1_fk8_dms/scripts
+sh submit_cluster.sh "--snakefile" run_analysis_sc.smk $@
+
 echo "Running all plotting notebooks to regenerate figures"
 cd $base_folder/analysis
 sh submit_cluster.sh "--snakefile" run_all_ipynb_scripts.smk $@

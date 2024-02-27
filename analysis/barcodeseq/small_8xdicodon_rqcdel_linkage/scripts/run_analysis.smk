@@ -1,5 +1,7 @@
 """Workflow for getting linkage.
   Combines the linkage outputs into one csv file (7 plasmid libraries).
+  Note that the linkage was done s.t. R1 and R2 inserts need to be stitched together,
+  R2 has the first 36nt of the insert (no revcomp), and R1 has the remaining 12nt (revcomp)
 
   :Date: 8 Dec 2023
 """
@@ -15,7 +17,7 @@ import itertools as it
 sample_annotations = pd.read_table("../annotations/sample_annotations.csv", 
                                    sep=",", comment = "#", dtype=object)
 print(sample_annotations)
-
+sra_annotations = pd.read_table("../../../../annotations/sra_annotations.tsv")
 
 # these rules are run locally
 localrules: all
@@ -39,17 +41,19 @@ rule all:
     ref_vs_ref_align = '../data/ref_vs_ref_alignments/filtered_barcodes_all_linkage/alignment_barcode1.bam',
     filtered_barcodes = '../data/filtered_barcodes/filtered_barcodes_all_linkage.csv',
 
-def get_split_read_files_input(wildcards):
-  """This function returns the names of R1,R2,R3 files for combining them
+def get_fastq_file_for_sample_name(wildcards):
+  """This function gets the R1 or R2 file depending on the `insert_read` column of `sample_annotations`
   """
-  filenames = [f'../data/fastq/{filename}' 
-      for filename in filter(lambda x: re.search(f'{wildcards.sample_id}_', x) and re.search('_R[123]_', x), os.listdir('../data/fastq/'))]
-  return filenames
+  #sample_id = sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'sample_id'].item()
+  sample_id = wildcards.sample_id
+  srr = sra_annotations.loc[sra_annotations['sample_id'] == sample_id, 'srr'].item()
+  filename = f'../../../../data/fastq/{srr}.fastq'
+  return filename
 
 rule extract_and_tabulate_all_insert_barcodes:
   """Extract and tabulate insert and barcodes
   """
-  input: get_split_read_files_input
+  input: get_fastq_file_for_sample_name
   output: '../data/insert_barcodes/{sample_id}.csv'
   params:
     barcode_read = lambda wildcards: sample_annotations.loc[sample_annotations['sample_id'] == wildcards.sample_id, 'barcode_read'].tolist()[0],
