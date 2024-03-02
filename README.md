@@ -13,7 +13,6 @@ Seattle, WA 98195, USA <br/>
 
 bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023.09.27.559793v1)
 
-## Table of Contents
 - [Abstract](#abstract)
 - [Instructions for running the code repo](#running-the-code)
 - [Data](data/)
@@ -34,6 +33,41 @@ bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023
 - [Code for counting insert-UMI pairs in (FK)~8~ DMS library in *upf1∆*_cells](analysis/barcodeseq/upf1_fk8_dms/scripts/)
 - [Code for linking barcodes and codon pair inserts in small 8× dicodon library in RQC deletion strains](analysis/barcodeseq/small_8xdicodon_rqcdel_linkage/scripts)
 - [Code to regenerate all figure panels](analysis/run_all_ipynb_scripts.smk)
+
+
+## Abstract
+
+Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
+However, the full diversity of sequence motifs that trigger co-translational mRNA decay is poorly understood.
+To comprehensively identify sequence motifs that trigger mRNA decay, we use a massively parallel reporter assay to measure the effect of all possible combinations of codon pairs on mRNA levels in S. cerevisiae.
+In addition to known mRNA-destabilizing sequences, we identify several dipeptide repeats whose translation reduces mRNA levels. 
+These include combinations of positively charged and bulky residues, as well as proline-glycine and proline-aspartic acid dipeptide repeats.
+Genetic deletion of the ribosome collision sensor Hel2 rescues the mRNA effects of these motifs, suggesting that they trigger ribosome slowdown and activate the ribosome-associated quality control (RQC) pathway.
+Deep mutational scanning of an mRNA-destabilizing dipeptide repeat reveals a complex relationship between the charge, bulkiness, and location of amino acid residues in conferring mRNA instability.
+Finally, we show that the mRNA effects of codon pairs are predictive of the effects of endogenous sequences.
+Our work highlights the complexity of sequence motifs driving co-translational mRNA decay in eukaryotes, and presents a high-throughput approach to dissect their requirements at the codon level.
+
+
+## Running the code
+- To run this on a cluster with singularity containers, do:
+```
+module load singularity # for fred hutch cluster
+conda activate snakemake # this is a minimal conda env that has snakemake-minimal and pandas for invoking snakefile
+sh run_everything.sh
+```
+
+- The ```run_everything.sh``` file will:
+  - Download FASTQ files from SRA
+  - Run all linkage sequencing, barcode sequencing, and insert sequencing [code](analysis/barcodeseq)
+  - Run [code](analysis/library_design/endogenous_fragments/scripts/run_analysis.smk) to design of the endogenous fragments library
+  - Run [code](analysis/run_all_ipynb_scripts.smk) to regenerate figure panels
+    - This will also run the code to process flow cytometry data
+
+## Docker containers
+- [R](https://github.com/rasilab/r/pkgs/container/r)
+- [python](https://github.com/rasilab/python/pkgs/container/python)
+- [R and python](https://github.com/rasilab/r_python/pkgs/container/r_python)
+
 
 ## Code to generate figure panels from manuscript
 
@@ -56,35 +90,3 @@ bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023
 | S4A                  | Wild-type, *hel2∆*, *syh1∆*, *hel2∆/syh1∆*, *cue2∆*, and *xrn1∆* cells with revision codon pair pool | [analysis/barcodeseq/small_8xdicodon_rqcdel_mrna_grna/scripts/plot_dicodon_effects.ipynb](analysis/barcodeseq/small_8xdicodon_rqcdel_mrna_grna/scripts/plot_dicodon_effects.ipynb) |
 | S5A, S5B             | Wild-type, *hel2∆*, and *upf1∆* cells with (FK)~8~ DMS library                                       | [analysis/barcodeseq/upf1_fk8_dms/scripts/plot_variant_effects_wt_hel2_upf1_reps.ipynb](analysis/barcodeseq/upf1_fk8_dms/scripts/plot_variant_effects_wt_hel2_upf1_reps.ipynb)   |
 
-
-## Abstract
-
-Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
-However, the full diversity of sequence motifs that trigger co-translational mRNA decay is poorly understood.
-To comprehensively identify sequence motifs that trigger mRNA decay, we use a massively parallel reporter assay to measure the effect of all possible combinations of codon pairs on mRNA levels in S. cerevisiae.
-In addition to known mRNA-destabilizing sequences, we identify several dipeptide repeats whose translation reduces mRNA levels. 
-These include combinations of positively charged and bulky residues, as well as proline-glycine and proline-aspartic acid dipeptide repeats.
-Genetic deletion of the ribosome collision sensor Hel2 rescues the mRNA effects of these motifs, suggesting that they trigger ribosome slowdown and activate the ribosome-associated quality control (RQC) pathway.
-Deep mutational scanning of an mRNA-destabilizing dipeptide repeat reveals a complex relationship between the charge, bulkiness, and location of amino acid residues in conferring mRNA instability.
-Finally, we show that the mRNA effects of codon pairs are predictive of the effects of endogenous sequences.
-Our work highlights the complexity of sequence motifs driving co-translational mRNA decay in eukaryotes, and presents a high-throughput approach to dissect their requirements at the codon level.
-
-## Running the code
-- To run this on a cluster with singularity containers, do:
-```
-module load singularity # for fred hutch cluster
-conda activate snakemake # this is a minimal conda env that has snakemake-minimal and pandas for invoking snakefile
-sh run_everything.sh
-```
-
-- The ```run_everything.sh``` file will:
-  - Download FASTQ files from SRA
-  - Run all linkage sequencing, barcode sequencing, and insert sequencing [code](analysis/barcodeseq)
-  - Run [code](analysis/library_design/endogenous_fragments/scripts/run_analysis.smk) to design of the endogenous fragments library
-  - Run [code](analysis/run_all_ipynb_scripts.smk) to regenerate figure panels
-    - This will also run the code to process flow cytometry data
-
-## Docker containers
-- [R](https://github.com/rasilab/r/pkgs/container/r)
-- [python](https://github.com/rasilab/python/pkgs/container/python)
-- [R and python](https://github.com/rasilab/r_python/pkgs/container/r_python)
