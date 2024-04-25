@@ -1,4 +1,3 @@
-
 # Massively parallel identification of sequence motifs triggering ribosome-associated mRNA quality control
 
 **Katharine Y. Chen**<sup>1,2</sup>, **Heungwon Park**<sup>1</sup>, **Arvind Rasi Subramaniam**<sup>1,†</sup>
@@ -11,7 +10,19 @@ Seattle, WA 98195, USA <br/>
 
 <sup>†</sup> Corresponding author: <rasi@fredhutch.org>
 
-bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023.09.27.559793v1)
+Nucleic Acids Research [10.1093/nar/gkae285](https://academic.oup.com/nar/advance-article/doi/10.1093/nar/gkae285/7655782)
+
+## Abstract
+
+Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
+However, the full diversity of sequence motifs that trigger co-translational mRNA decay is poorly understood.
+To comprehensively identify sequence motifs that trigger mRNA decay, we use a massively parallel reporter assay to measure the effect of all possible combinations of codon pairs on mRNA levels in S. cerevisiae.
+In addition to known mRNA-destabilizing sequences, we identify several dipeptide repeats whose translation reduces mRNA levels. 
+These include combinations of positively charged and bulky residues, as well as proline-glycine and proline-aspartic acid dipeptide repeats.
+Genetic deletion of the ribosome collision sensor Hel2 rescues the mRNA effects of these motifs, suggesting that they trigger ribosome slowdown and activate the ribosome-associated quality control (RQC) pathway.
+Deep mutational scanning of an mRNA-destabilizing dipeptide repeat reveals a complex relationship between the charge, bulkiness, and location of amino acid residues in conferring mRNA instability.
+Finally, we show that the mRNA effects of codon pairs are predictive of the effects of endogenous sequences.
+Our work highlights the complexity of sequence motifs driving co-translational mRNA decay in eukaryotes, and presents a high-throughput approach to dissect their requirements at the codon level.
 
 - [Abstract](#abstract)
 - [Instructions for running the code repo](#running-the-code)
@@ -33,20 +44,6 @@ bioRxiv [10.1101/2023.09.27.559793](https://www.biorxiv.org/content/10.1101/2023
 - [Code for counting insert-UMI pairs in (FK)~8~ DMS library in *upf1∆*_cells](analysis/barcodeseq/upf1_fk8_dms/scripts/)
 - [Code for linking barcodes and codon pair inserts in small 8× dicodon library in RQC deletion strains](analysis/barcodeseq/small_8xdicodon_rqcdel_linkage/scripts)
 - [Code to regenerate all figure panels](analysis/run_all_ipynb_scripts.smk)
-
-
-## Abstract
-
-Decay of mRNAs can be triggered by ribosome slowdown at stretches of rare codons or positively charged amino acids.
-However, the full diversity of sequence motifs that trigger co-translational mRNA decay is poorly understood.
-To comprehensively identify sequence motifs that trigger mRNA decay, we use a massively parallel reporter assay to measure the effect of all possible combinations of codon pairs on mRNA levels in S. cerevisiae.
-In addition to known mRNA-destabilizing sequences, we identify several dipeptide repeats whose translation reduces mRNA levels. 
-These include combinations of positively charged and bulky residues, as well as proline-glycine and proline-aspartic acid dipeptide repeats.
-Genetic deletion of the ribosome collision sensor Hel2 rescues the mRNA effects of these motifs, suggesting that they trigger ribosome slowdown and activate the ribosome-associated quality control (RQC) pathway.
-Deep mutational scanning of an mRNA-destabilizing dipeptide repeat reveals a complex relationship between the charge, bulkiness, and location of amino acid residues in conferring mRNA instability.
-Finally, we show that the mRNA effects of codon pairs are predictive of the effects of endogenous sequences.
-Our work highlights the complexity of sequence motifs driving co-translational mRNA decay in eukaryotes, and presents a high-throughput approach to dissect their requirements at the codon level.
-
 
 ## Running the code
 - To run this on a cluster with singularity containers, do:

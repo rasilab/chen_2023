@@ -1,6 +1,5 @@
 """Workflow for getting linkage
 
-  :Author: Arvind Rasi Subramaniam
   :Edited: Katharine Chen
   :Date: 15 June 2023
 """
