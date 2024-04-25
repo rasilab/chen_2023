@@ -16,7 +16,6 @@ import itertools as it
 # configuration specific to this analysis
 sample_annotations = pd.read_table("../annotations/sample_annotations.csv", 
                                    sep=",", comment = "#", dtype=object)
-print(sample_annotations)
 sra_annotations = pd.read_table("../../../../annotations/sra_annotations.tsv")
 
 # these rules are run locally
